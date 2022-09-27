@@ -2,6 +2,11 @@
 <div>
     <header class="header cf" v-if="!$store.state.en">
         <div class="container">
+            <div v-if="$vuetify.breakpoint.xs" class="logo pull-right">
+                <a href="index.html">
+                    <img src="img/resources/logo-ar.png" alt="Awesome Image" />
+                </a>
+            </div>
             <div class="header-right-info pull-left clearfix">
                 <div class="single-header-info">
                     <div class="icon-box">
@@ -9,7 +14,7 @@
                             <i class="flaticon-interface"></i>
                         </div>
                     </div>
-                    <div class="content">
+                    <div class="content pa-2">
                         <span>البريد</span>
                         <p><a class="color-gray" :href="'mailto://'+$store.state.site.info.site_email">{{$store.state.site.info.site_email}}</a></p>
                     </div>
@@ -20,16 +25,19 @@
                             <i class="flaticon-telephone"></i>
                         </div>
                     </div>
-                    <div class="content">
+                    <div class="content pa-2">
                         <span>موبايل</span>
-                        <p><a class="color-gray" :href="'tel://'+$store.state.site.info.site_phone">{{$store.state.site.info.site_phone}}</a></p>
-                    </div>
+                        <p><a class="color-gray" :href="'tel://'+$store.state.site.info.site_phone">{{$store.state.site.info.site_phone}}</a></p>                    </div>
+                </div>
+
+                <div class="single-header-info">
+
                 </div>
                 <!--                <div class="single-header-info">-->
                 <!--                    <a href="appointment.html" class="thm-btn">Appointment</a>-->
                 <!--                </div>-->
             </div>
-            <div class="logo pull-right">
+            <div v-if="!$vuetify.breakpoint.xs" class="logo pull-right">
                 <a href="index.html">
                     <img src="img/resources/logo-ar.png" alt="Awesome Image" />
                 </a>
@@ -51,7 +59,7 @@
                                 <i class="flaticon-interface"></i>
                             </div>
                         </div>
-                        <div class="content">
+                        <div class="content pa-2">
                             <h3>EMAIL</h3>
                             <p><a class="color-gray" :href="'mailto://'+$store.state.site.info.site_email">{{$store.state.site.info.site_email}}</a></p>
 
@@ -63,14 +71,16 @@
                                 <i class="flaticon-telephone"></i>
                             </div>
                         </div>
-                        <div class="content">
+                        <div class="content pa-2">
                             <h3>Call Now</h3>
                             <p><a class="color-gray" :href="'tel://'+$store.state.site.info.site_phone">{{$store.state.site.info.site_phone}}</a></p>
 
                         </div>
-                        <div class="single-header-info">
-                        </div>
                     </div>
+                    <div class="single-header-info">
+
+                    </div>
+
                 </div>
             </div>
         </header>

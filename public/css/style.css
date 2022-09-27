@@ -1684,7 +1684,7 @@ li {
 
 .fact-counter-wrapper {
     position: relative;
-    background: url(../img/resources/fact-counter-bg.jpg) center center no-repeat;
+    /*background: url(../img/resources/fact-counter-bg.jpg) center center no-repeat;*/
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -1989,7 +1989,7 @@ li {
 /* 15 .gallery_area styles */
 
 #gallery_area {
-    background: #000 url(../img/gallery/gallery-bg.jpg);
+    background: #000 url(../img/cement2.jpg);
     background-position: center center;
     background-size: cover;
     position: relative;

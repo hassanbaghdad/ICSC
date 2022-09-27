@@ -2,7 +2,7 @@
     <v-app>
         <!-- Preloader -->
 
-        <div v-if="$store.state.loading" class="preloader">
+        <div  class="preloader">
             <div class="myloading">
                 <div class="cover-loading">
                     <div class="cog cog_blue">

@@ -5,20 +5,32 @@
                <section class="sec-padding about-content full-sec pb-80" v-if="!$store.state.en">
                    <div class="container">
                        <div class="row">
-                           <div class="col-md-7 hidden-md text-right">
-                               <img src="img/resources/about-1.jpg" alt="Awesome Image" />
-                           </div>
-                           <div class="col-lg-5 col-md-12">
-                               <div class="full-sec-content mt-15">
-                                   <div class="sec-title style-two text-right">
-                                       <h2 class="f22b cf">{{section.section_title}}</h2>
-                                       <span class="decor" style="transform: scaleX(-1)"><span class="inner" ></span></span>
+                           <div class="col col-12 col-md-6 col-lg-8">
+                               <v-card elevation="6" class="pa-8">
+                                   <div class="row">
+                                       <div class="col-md-7 hidden-md text-right">
+                                           <v-img contain max-height="400" :src="$axios.defaults.baseURL+'/images/'+section.section_image" alt="Awesome Image" />
+                                       </div>
+                                       <div class="col-lg-5 col-md-12">
+                                           <div class="full-sec-content mt-15">
+                                               <div class="sec-title style-two text-right">
+                                                   <h2 class="f22b cf">{{section.section_title}}</h2>
+                                                   <span class="decor" style="transform: scaleX(-1)"><span class="inner" ></span></span>
+                                               </div>
+                                               <p class="text-justify f16 cf rtl">{{section.section_desc}}</p>
+                                           </div>
+                                       </div>
+
                                    </div>
-                                   <p class="text-justify f16 cf rtl">{{section.section_desc}}</p>
-                               </div>
+                               </v-card>
+                           </div>
+                            <div class="col col-12 col-md-6 col-lg-4">
+                                <SideSections/>
                            </div>
 
                        </div>
+
+
                    </div>
                </section>
                <section class="sec-padding about-content full-sec pb-80" v-if="$store.state.en">
@@ -47,8 +59,10 @@
 </template>
 
 <script>
+    import SideSections from "@/views/Site/ClientPages/SideSections";
     export default {
         name: "ViewSection",
+        components: {SideSections},
         data(){
             return{
                 slug:'',

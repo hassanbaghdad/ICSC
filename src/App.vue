@@ -20,9 +20,33 @@
       }
     },
     created(){
-      this.$store.commit("RENDER")
-    }
+      this.$store.commit("RENDER");
+
+      if(localStorage.getItem('en') =="true")
+      {
+        this.$store.state.en = true;
+      }else{
+        this.$store.state.en = false;
+      }
+
+    },
+
+
+
   };
+  // window.onpopstate = function (evt) {
+  //   var message = 'Are you sure you want to leave?';
+  //   if (typeof evt == 'undefined') {
+  //     evt = window.event;
+  //   }
+  //   if (evt) {
+  //     evt.returnValue = message;
+  //   }
+  //   window.location="/";
+  //   return message;
+  //
+  //
+  // }
 </script>
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');

@@ -1,10 +1,12 @@
 <template>
-    <h1>News</h1>
+    <LatestNews/>
 </template>
 
 <script>
+    import LatestNews from "@/components/site/LatestNews";
     export default {
-        name: "News"
+        name: "News",
+        components: {LatestNews}
     }
 </script>
 

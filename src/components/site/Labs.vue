@@ -1,8 +1,10 @@
 <template>
     <v-app>
+        <v-divider/>
         <div class="title-box text-center">
-            <h2 class="cf f24b">المعامل</h2>
-            <p>Lorem ipsum is a dummy text it will use for subtitle here</p>
+            <h2 v-if="!$store.state.en" class="cf f24b">المعامل</h2>
+            <h2 v-if="$store.state.en">Plants</h2>
+
             <span class="decor"><span class="inner"></span></span>
         </div>
         <section class="featured-section">
@@ -15,16 +17,25 @@
                         <v-tabs
                                 v-model="tab"
                                 centered
-                                center-active
                         >
-                            <v-tabs-slider></v-tabs-slider>
+                            <v-tabs-slider class="text-center"></v-tabs-slider>
 
                             <v-tab href="#all">
-                                All
+                               <span v-if="!$store.state.en" class="cf f16">الكل</span>
+                               <span v-if="$store.state.en">All</span>
 
                             </v-tab>
-                            <v-tab href="#one">
-                                One
+                            <v-tab href="#normal">
+                                <span v-if="!$store.state.en" class="cf f16">اعتيادي</span>
+                                <span v-if="$store.state.en">Normal</span>
+                            </v-tab>
+                            <v-tab href="#white">
+                                <span v-if="!$store.state.en" class="cf f16">الابيض</span>
+                                <span v-if="$store.state.en">White</span>
+                            </v-tab>
+                            <v-tab href="#resistant">
+                                <span v-if="!$store.state.en" class="cf f16">المقاوم</span>
+                                <span v-if="$store.state.en">Resistant</span>
                             </v-tab>
 
                         </v-tabs>
@@ -36,21 +47,33 @@
                     <v-tab-item value="all" style="background-color: #106a64">
                         <div class="container">
                             <div class="row">
-                                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,i) in [1,4,5,7,8,11,1,4,5,7,8,11,]" :key="'labs_swep_'+i">
+                                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,i) in $store.state.site.labs.labs" :key="'labs_swep_'+i">
                                     <div class="services-content  pl-30 pl-md-0">
-                                        <div style="background-color: grey;width: 250px" class="item" >
+                                        <div :style="$vuetify.breakpoint.xs?'background-color: grey;width: 325px':'background-color: grey;width: 250px'" class="item" >
                                             <v-card elevation="8">
                                                 <div class="service-box">
                                                     <div class="img-thumb">
-                                                        <v-img contain max-height="400" :src="'https://www.icsc.gov.iq/cementn/cem/'+item+'.jpg'"/>
+                                                        <v-img contain max-height="400" :src="$axios.defaults.baseURL+'/images/'+item.lab_image"/>
                                                     </div>
                                                     <div class="content">
-                                                        <h4 class="title"><a href="#" class="cf f14">معمل سمنت بابل</a></h4>
+                                                        <h4 class="title"><router-link :to="'/plants/'+item.lab_slug" class="cf f14">{{item.lab_name}}</router-link></h4>
                                                     </div>
                                                     <div class="overlay">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore cum, sit quae deleniti placeat.</p>
-                                                        <a class="value" href="#"> Start From <span class="service-price">$45</span></a>
-                                                        <a class="btn-link" href="#">read more <i class="fa fa-arrow-circle-right"></i></a>
+
+                                                        <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
+                                                        <p v-if="$store.state.en" class="cf f20">Plant Location</p>
+                                                        <p v-if="!$store.state.en" class="cf f20">{{item.lab_location}} </p>
+                                                        <p v-if="$store.state.en" class="cf f20">{{item.lab_location_en}} </p>
+                                                        <span v-if="!$store.state.en" class="service-price cf f20">نوع الانتاج </span>
+                                                        <span v-if="$store.state.en" class="service-price cf f20">Production Type  </span>
+                                                        <a v-if="!$store.state.en" class="value black--text" href="#">{{item.lab_prod_type}}</a>
+                                                        <a v-if="$store.state.en" class="value black--text" href="#">{{item.lab_prod_type_en}}</a>
+
+                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link cf f20b" href="#">
+                                                            <span v-if="!$store.state.en">عرض المزيد</span>
+                                                            <span v-if="$store.state.en">Read More </span>
+                                                            <i class="fa fa-arrow-circle-right"></i>
+                                                        </router-link>
                                                     </div>
                                                 </div>
                                             </v-card>
@@ -62,6 +85,131 @@
                         </div>
 
                     </v-tab-item>
+                    <v-tab-item value="resistant" style="background-color: #106a64">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,i) in $store.state.site.labs.labs.filter(item=>item.lab_cement_type.match('مقاوم'))" :key="'labs_swep_'+i">
+                                    <div class="services-content  pl-30 pl-md-0">
+                                        <div :style="$vuetify.breakpoint.xs?'background-color: grey;width: 325px':'background-color: grey;width: 250px'" class="item" >
+                                            <v-card elevation="8">
+                                                <div class="service-box">
+                                                    <div class="img-thumb">
+                                                        <v-img contain max-height="400" :src="$axios.defaults.baseURL+'/images/'+item.lab_image"/>
+                                                    </div>
+                                                    <div class="content">
+                                                        <h4 class="title"><router-link :to="'/plants/'+item.lab_slug" class="cf f14">{{item.lab_name}}</router-link></h4>
+                                                    </div>
+                                                    <div class="overlay">
+
+                                                        <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
+                                                        <p v-if="$store.state.en" class="cf f20">Plant Location</p>
+                                                        <p v-if="!$store.state.en" class="cf f20">{{item.lab_location}} </p>
+                                                        <p v-if="$store.state.en" class="cf f20">{{item.lab_location_en}} </p>
+                                                        <span v-if="!$store.state.en" class="service-price cf f20">نوع الانتاج </span>
+                                                        <span v-if="$store.state.en" class="service-price cf f20">Production Type  </span>
+                                                        <a v-if="!$store.state.en" class="value black--text" href="#">{{item.lab_prod_type}}</a>
+                                                        <a v-if="$store.state.en" class="value black--text" href="#">{{item.lab_prod_type_en}}</a>
+
+                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link cf f20b" href="#">
+                                                            <span v-if="!$store.state.en">عرض المزيد</span>
+                                                            <span v-if="$store.state.en">Read More </span>
+                                                            <i class="fa fa-arrow-circle-right"></i>
+                                                        </router-link>
+                                                    </div>
+                                                </div>
+                                            </v-card>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </v-tab-item>
+                    <v-tab-item value="white" style="background-color: #106a64">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,i) in $store.state.site.labs.labs.filter(item=>item.lab_cement_type.match('ابيض'))" :key="'labs_swep_'+i">
+                                                <div class="services-content  pl-30 pl-md-0">
+                                                    <div :style="$vuetify.breakpoint.xs?'background-color: grey;width: 325px':'background-color: grey;width: 250px'" class="item" >
+                                                        <v-card elevation="8">
+                                                            <div class="service-box">
+                                                                <div class="img-thumb">
+                                                                    <v-img contain max-height="400" :src="$axios.defaults.baseURL+'/images/'+item.lab_image"/>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h4 class="title"><router-link :to="'/plants/'+item.lab_slug" class="cf f14">{{item.lab_name}}</router-link></h4>
+                                                                </div>
+                                                                <div class="overlay">
+
+                                                                    <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
+                                                                    <p v-if="$store.state.en" class="cf f20">Plant Location</p>
+                                                                    <p v-if="!$store.state.en" class="cf f20">{{item.lab_location}} </p>
+                                                                    <p v-if="$store.state.en" class="cf f20">{{item.lab_location_en}} </p>
+                                                                    <span v-if="!$store.state.en" class="service-price cf f20">نوع الانتاج </span>
+                                                                    <span v-if="$store.state.en" class="service-price cf f20">Production Type  </span>
+                                                                    <a v-if="!$store.state.en" class="value black--text" href="#">{{item.lab_prod_type}}</a>
+                                                                    <a v-if="$store.state.en" class="value black--text" href="#">{{item.lab_prod_type_en}}</a>
+
+                                                                    <router-link :to="'/plants/'+item.lab_slug" class="btn-link cf f20b" href="#">
+                                                                        <span v-if="!$store.state.en">عرض المزيد</span>
+                                                                        <span v-if="$store.state.en">Read More </span>
+                                                                        <i class="fa fa-arrow-circle-right"></i>
+                                                                    </router-link>
+                                                                </div>
+                                                            </div>
+                                                        </v-card>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </v-tab-item>
+                    <v-tab-item value="normal" style="background-color: #106a64">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,i) in $store.state.site.labs.labs.filter(item=>item.lab_cement_type.match('اعتيادي'))" :key="'labs_swep_'+i">
+                                                <div class="services-content  pl-30 pl-md-0">
+                                                    <div :style="$vuetify.breakpoint.xs?'background-color: grey;width: 325px':'background-color: grey;width: 250px'" class="item" >
+                                                        <v-card elevation="8">
+                                                            <div class="service-box">
+                                                                <div class="img-thumb">
+                                                                    <v-img contain max-height="400" :src="$axios.defaults.baseURL+'/images/'+item.lab_image"/>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h4 class="title"><router-link :to="'/plants/'+item.lab_slug" class="cf f14">{{item.lab_name}}</router-link></h4>
+                                                                </div>
+                                                                <div class="overlay">
+
+                                                                    <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
+                                                                    <p v-if="$store.state.en" class="cf f20">Plant Location</p>
+                                                                    <p v-if="!$store.state.en" class="cf f20">{{item.lab_location}} </p>
+                                                                    <p v-if="$store.state.en" class="cf f20">{{item.lab_location_en}} </p>
+                                                                    <span v-if="!$store.state.en" class="service-price cf f20">نوع الانتاج </span>
+                                                                    <span v-if="$store.state.en" class="service-price cf f20">Production Type  </span>
+                                                                    <a v-if="!$store.state.en" class="value black--text" href="#">{{item.lab_prod_type}}</a>
+                                                                    <a v-if="$store.state.en" class="value black--text" href="#">{{item.lab_prod_type_en}}</a>
+
+                                                                    <router-link :to="'/plants/'+item.lab_slug" class="btn-link cf f20b" href="#">
+                                                                        <span v-if="!$store.state.en">عرض المزيد</span>
+                                                                        <span v-if="$store.state.en">Read More </span>
+                                                                        <i class="fa fa-arrow-circle-right"></i>
+                                                                    </router-link>
+                                                                </div>
+                                                            </div>
+                                                        </v-card>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </v-tab-item>
+
+
                 </v-tabs-items>
 
 
@@ -71,90 +219,6 @@
         </section>
     </v-app>
 
-<!--    <section class="services-section sec-padding pb-60 pb-md-140" data-bg-color="#f7f7f7">-->
-<!--        <div class="container-fluid">-->
-<!--            <div class="sec-title text-center">-->
-<!--                <h2>Our Services</h2>-->
-<!--                <p>Lorem ipsum is a dummy text it will use for subtitle here</p>-->
-<!--                <span class="decor"><span class="inner"></span></span>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <div class="welcome-wrp col-lg-4 col-md-4 col-sm-4 col-xs-12 p-0">-->
-<!--                    <div class="services-wlc">-->
-<!--                        <div class="content">-->
-<!--                            <h3 class="color-theme title fw-b">Check our services</h3>-->
-<!--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis voluptates, dolorem et iusto, tempora officiis adipisci maiores.</p>-->
-<!--                            <a class="color-light-white font-size-18 fw-b" href="#">All Services <i class="fa fa-arrow-circle-right"></i></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 p-0">-->
-<!--                    <div class="services-content services-carousel pl-30 pl-md-0">-->
-<!--                        <div class="item">-->
-<!--                            <div class="service-box">-->
-<!--                                <div class="img-thumb">-->
-<!--                                    <img src="img/services/1.jpg" alt="">-->
-<!--                                </div>-->
-<!--                                <div class="content">-->
-<!--                                    <h4 class="title"><a href="#">Excellent Services</a></h4>-->
-<!--                                </div>-->
-<!--                                <div class="overlay">-->
-<!--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore cum, sit quae deleniti placeat.</p>-->
-<!--                                    <a class="value" href="#"> Start From <span class="service-price">$45</span></a>-->
-<!--                                    <a class="btn-link" href="#">read more <i class="fa fa-arrow-circle-right"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="item">-->
-<!--                            <div class="service-box">-->
-<!--                                <div class="img-thumb">-->
-<!--                                    <img src="img/services/2.jpg" alt="">-->
-<!--                                </div>-->
-<!--                                <div class="content">-->
-<!--                                    <h4 class="title"><a href="#">Chemical Research</a></h4>-->
-<!--                                </div>-->
-<!--                                <div class="overlay">-->
-<!--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore cum, sit quae deleniti placeat.</p>-->
-<!--                                    <a class="value" href="#"> Start From <span class="service-price">$45</span></a>-->
-<!--                                    <a class="btn-link" href="#">read more <i class="fa fa-arrow-circle-right"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="item">-->
-<!--                            <div class="service-box">-->
-<!--                                <div class="img-thumb">-->
-<!--                                    <img src="img/services/3.jpg" alt="">-->
-<!--                                </div>-->
-<!--                                <div class="content">-->
-<!--                                    <h4 class="title"><a href="#">Factory Process</a></h4>-->
-<!--                                </div>-->
-<!--                                <div class="overlay">-->
-<!--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore cum, sit quae deleniti placeat.</p>-->
-<!--                                    <a class="value" href="#"> Start From <span class="service-price">$45</span></a>-->
-<!--                                    <a class="btn-link" href="#">read more <i class="fa fa-arrow-circle-right"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="item">-->
-<!--                            <div class="service-box">-->
-<!--                                <div class="img-thumb">-->
-<!--                                    <img src="img/services/4.jpg" alt="">-->
-<!--                                </div>-->
-<!--                                <div class="content">-->
-<!--                                    <h4 class="title"><a href="#">Mechanical Service</a></h4>-->
-<!--                                </div>-->
-<!--                                <div class="overlay">-->
-<!--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore cum, sit quae deleniti placeat.</p>-->
-<!--                                    <a class="value" href="#"> Start From <span class="service-price">$45</span></a>-->
-<!--                                    <a class="btn-link" href="#">read more <i class="fa fa-arrow-circle-right"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
 </template>
 
 <script>
@@ -173,6 +237,8 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .v-tabs:not(.v-tabs--vertical):not(.v-tabs--right) > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes) .v-slide-group__prev{
+        display: none !important;
+    }
 </style>

@@ -2,12 +2,12 @@
     <div >
         <TopSlideShow/>
         <Cols3/>
-        <News/>
+        <LatestNews/>
         <Labs/>
         <Counters/>
         <Sections/>
         <Tenders/>
-        <LatestNews/>
+
         <Gallery/>
 
         <Brands/>
@@ -36,7 +36,6 @@
             Sections,
             Counters,
            Labs,
-           News,
            Cols3,
            TopSlideShow,
         }

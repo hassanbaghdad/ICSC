@@ -2,120 +2,58 @@
     <section class="blog-home sec-padding">
         <div class="container">
             <div class="sec-title text-center">
-                <h2 class="f24b cf">اخر الاخبار</h2>
-                <p>Lorem ipsum is a dummy text it will use for subtitle here</p>
+                <h2 v-if="!$store.state.en" class="f24b cf">اخر الاخبار</h2>
+                <h2 v-if="$store.state.en">Latest News</h2>
                 <span class="decor">
 					<span class="inner"></span>
                 </span>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-12 sm-col5-center mb-sm-40">
+                <div class="col-md-4 col-sm-12 sm-col5-center mb-sm-40" v-for="(ne,i) in $store.state.site.latest_news.latest_news" :key="'latest_news_main_'+i">
                     <div class="single-blog-post">
                         <div class="img-box">
-                            <img src="img/blog/1.jpg" alt="">
+                            <img :src="$axios.defaults.baseURL+'/images/'+ne.post_image" style="height: 200px;width: 350px" alt="">
                             <div class="overlay">
                                 <div class="box">
                                     <div class="content">
                                         <ul>
-                                            <li><a href="blog-details.html"><i class="fa fa-link"></i></a></li>
+                                            <li><router-link :to="'/news/'+ne.post_slug"><i class="fa fa-eye"></i></router-link></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="content-box">
-                            <div class="date-box">
+                            <div :class="!$store.state.en?'date-box float-right':'date-box'">
                                 <div class="inner">
                                     <div class="date">
-                                        <b>24</b> apr
+                                       {{ne.post_date.substr(5,6)}}
                                     </div>
                                     <div class="comment">
-                                        <i class="fa fa-commenting-o"></i> 8
+                                        <i class="fa fa-eye"></i> {{ne.post_views}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="content">
-                                <a href="blog-details.html"><h3>Lates blog post with image</h3></a>
-                                <p>There are many variations passages available, but the lorem, ipsum... </p>
-                                <span>Tag: <a href="blog-details.html">power, factory</a></span>
+                            <div class="content" style="width: 100%">
+                                <router-link v-if="$store.state.en" :to="'/new/'+ne.post_slug"><h3>{{ne.post_title_en}}</h3></router-link>
+                                <router-link v-if="!$store.state.en" :to="'/new/'+ne.post_slug"><h3 class="text-right cf f20b">{{ne.post_title}}</h3></router-link>
+                                <p v-if="$store.state.en">{{ne.post_desc_en.substr(0,30)}} ...</p>
+                                <p v-if="!$store.state.en" class="cf f14 text-justify rtl">{{ne.post_desc.substr(0,30)}} ...</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12 sm-col5-center mb-sm-40">
-                    <div class="single-blog-post">
-                        <div class="img-box">
-                            <img src="img/blog/2.jpg" alt="">
-                            <div class="overlay">
-                                <div class="box">
-                                    <div class="content">
-                                        <ul>
-                                            <li><a href="blog-details.html"><i class="fa fa-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-box">
-                            <div class="date-box">
-                                <div class="inner">
-                                    <div class="date">
-                                        <b>24</b> apr
-                                    </div>
-                                    <div class="comment">
-                                        <i class="fa fa-commenting-o"></i> 8
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="blog-details.html"><h3>Lates blog post with image</h3></a>
-                                <p>There are many variations passages available, but the lorem, ipsum... </p>
-                                <span>Tag: <a href="blog-details.html">power, factory</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 sm-col5-center mb-sm-40">
-                    <div class="single-blog-post">
-                        <div class="img-box">
-                            <img src="img/blog/3.jpg" alt="">
-                            <div class="overlay">
-                                <div class="box">
-                                    <div class="content">
-                                        <ul>
-                                            <li><a href="blog-details.html"><i class="fa fa-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-box">
-                            <div class="date-box">
-                                <div class="inner">
-                                    <div class="date">
-                                        <b>24</b> apr
-                                    </div>
-                                    <div class="comment">
-                                        <i class="fa fa-commenting-o"></i> 8
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="blog-details.html"><h3>Lates blog post with image</h3></a>
-                                <p>There are many variations passages available, but the lorem, ipsum... </p>
-                                <span>Tag: <a href="blog-details.html">power, factory</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
 </template>
 
 <script>
+
     export default {
-        name: "LatestNews"
+        name: "LatestNews",
+
     }
 </script>
 
