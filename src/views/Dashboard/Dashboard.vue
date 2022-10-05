@@ -5,7 +5,7 @@
 
 
         <v-app-bar app dark>
-            <v-app-bar-nav-icon @click="$store.state.dash.drawer=!$store.state.dash.drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon  @click="$store.state.dash.drawer=!$store.state.dash.drawer"></v-app-bar-nav-icon>
         </v-app-bar>
 
         <!-- Sizes your content based upon application components -->

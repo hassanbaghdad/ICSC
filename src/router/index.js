@@ -21,6 +21,7 @@ import ViewTender from "@/components/site/ViewTender";
 import AllTenders from "@/views/Site/AllTenders";
 import ContactUs from "@/views/Site/ClientPages/ContactUs";
 import AllProduction from "@/views/Site/ClientPages/AllProduction";
+import Search from "@/views/Site/ClientPages/Search";
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,7 @@ const routes = [
       {path:'/contact-us',name:'ContactUs',component:ContactUs},
       {path:'/productions',name:'AllProduction',component:AllProduction},
       {path:'/news',name:'News',component:News},
+      {path:'/search/:text',name:'Search',component:Search},
 
     ]
   },
@@ -65,7 +67,8 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+//
 export default 
   router
 

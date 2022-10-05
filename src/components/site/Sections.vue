@@ -13,8 +13,8 @@
                            </div>
                           <div class="container">
                               <div class="row">
-                                  <div :class="$store.state.en?'col col-xs-12 xol-sm-6 col-md-4':'col col-xs-12 xol-sm-6 col-md-4 float-right'"  v-for="(item,i) in $store.state.site.sections.sections" :key="'section_i_'+i">
-                                      <router-link :to="'sections/'+item.section_slug" class="single-service-home mt-8">
+<!--                                  <div :class="$store.state.en?'col col-xs-12 xol-sm-6 col-md-3':'col col-xs-12 xol-sm-6 col-md-3 float-right'"  >-->
+<!--                                      <router-link :to="'sections/'+item.section_slug" class="single-service-home mt-8">-->
 
 <!--                                          <div class="content text-right"  v-if="!$store.state.en">-->
 <!--                                              <div class="cf f20b text-right mt-2 mr-4">{{item.section_title.split(' ')[0]}} <span class="color-theme f20b">{{item.section_title.split(item.section_title.split(' ')[0])[1]}}</span></div>-->
@@ -37,23 +37,28 @@
 <!--                                                  <v-img  src="icons/engineer.png"/>-->
 <!--                                              </div>-->
 <!--                                          </div>-->
+<carousel class="pa-4" :dots="false" :responsive="{0:{items:1,nav:false},600:{items:3,nav:true},750:{items:5,nav:false}}" :autoplay="true" :nav="false"  :items="5" v-if="success" style="height: 400px">
+    <v-card class=" ma-6 mt-4 mr-2" v-for="(item,i) in sections" :key="'section_i_'+i" elevation="6">
+        <router-link :to="'/sections/'+item.section_slug">
+        <v-card-text>
+            <v-img contain max-height="100"  src="icons/engineer.png"/>
+        </v-card-text>
+        <v-divider/>
+        <v-card-title>
 
-                                            <v-card class="mt-4">
-                                                <v-card-text>
-                                                    <v-img contain max-height="100"  src="icons/engineer.png"/>
-                                                </v-card-text>
-                                                <v-divider/>
-                                                <v-card-title>
-                                                    <div v-if="!$store.state.en" class="cf f20b ma-auto">{{item.section_title}}</div>
-                                                    <div v-if="$store.state.en" class="cf f20b ma-auto">{{item.section_title_en}}</div>
-                                                </v-card-title>
-                                            </v-card>
+            <span v-if="!$store.state.en&&success" class="cf f14b ma-auto black--text">{{item.section_title}}</span>
+            <span v-if="$store.state.en&&success" class="cf f14b ma-auto black--text">{{item.section_title_en}}</span>
+        </v-card-title>
+        </router-link>
+    </v-card>
+</carousel>
 
 
 
 
-                                      </router-link>
-                                  </div>
+
+<!--                                      </router-link>-->
+<!--                                  </div>-->
 
                               </div>
                           </div>
@@ -67,23 +72,44 @@
 </template>
 
 <script>
+    import carousel from 'vue-owl-carousel'
     export default {
         name: "Sections",
+        components: {
+            carousel
+        },
         data(){
             return{
                 sections:[],
                 success:false
             }
         },
-        created(){
-
+        computed:{
+            get_sections:function () {
+                return this.$store.state.site.sections.sections
+            }
         },
-        destroyed(){
-            this.success = true;
+        watch:{
+            get_sections:function (new_sections) {
+                this.sections = new_sections;
+
+                console.log(new_sections)
+            }
+        },
+        created()
+        {
+            this.$axios.get('api-site/get-sections').then(res=>{
+                this.sections = [];
+                this.sections = res.data;
+                this.success = true;
+            })
         }
+
     }
 </script>
 
 <style scoped>
-
+.owl-stage{
+    height: 400px !important;
+}
 </style>

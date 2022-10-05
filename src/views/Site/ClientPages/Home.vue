@@ -8,7 +8,6 @@
         <Sections/>
         <Tenders/>
 
-        <Gallery/>
 
         <Brands/>
     </div>
@@ -22,7 +21,7 @@
     import Counters from "@/components/site/Counters";
     import Sections from "@/components/site/Sections";
     import Tenders from "@/components/site/Tenders";
-    import Gallery from "@/components/site/Gallery";
+    //import Gallery from "@/components/site/Gallery";
     import LatestNews from "@/components/site/LatestNews";
     import Brands from "@/components/site/Brands";
 
@@ -31,13 +30,16 @@
         components:{
             Brands,
             LatestNews,
-            Gallery,
+            //Gallery,
             Tenders,
             Sections,
             Counters,
            Labs,
            Cols3,
            TopSlideShow,
+        },
+        mounted () {
+            window.scrollTo(0, 0)
         }
     }
 </script>

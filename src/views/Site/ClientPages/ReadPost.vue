@@ -125,7 +125,9 @@
             this.post_slug = this.$route.path.split('/news/')[1];
             this.get_post();
         },
-
+        mounted () {
+            window.scrollTo(0, 0)
+        }
 
     }
 </script>

@@ -94,8 +94,8 @@
                 </div>
                 <div class="search-box pull-left">
                     <form action="#">
-                        <input type="text" placeholder="بحث..." class="text-right cf">
-                        <button type="button"><i class="fa fa-search"></i></button>
+                        <input v-model="text" type="text" placeholder="بحث..." class="text-right cf">
+                        <button @click="search" type="button"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
             </div>
@@ -194,8 +194,8 @@
                 </div>
                 <div class="search-box pull-right">
                     <form action="#">
-                        <input type="text" placeholder="Search..." class="text-left">
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input v-model="text" type="text" placeholder="Search..." class="text-left">
+                        <button @click="search" type="button"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
             </div>
@@ -206,7 +206,17 @@
 
 <script>
     export default {
-        name: "Navbar"
+        name: "Navbar",
+        data(){
+            return{
+                text:''
+            }
+        },
+        methods:{
+            search(){
+                this.$router.push('/search/'+this.text);
+            }
+        }
     }
 </script>
 

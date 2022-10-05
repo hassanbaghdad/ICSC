@@ -23,7 +23,29 @@
 
 <script>
     export default {
-        name: "SideSections"
+        name: "SideSections",
+        data(){
+            return{
+                slug:'',
+                section:[],
+                success:false
+            }
+        },
+        methods:{
+            get_section()
+            {
+                this.$axios.get('api-site/get-section/'+this.slug).then(res=>{
+                    this.section = res.data;
+                    this.success = true;
+                }).cache(err=>{
+                    console.log(err)
+                })
+            }
+        },
+        created(){
+            this.slug = this.$route.path.split('/sections/')[1];
+            this.get_section();
+        }
     }
 </script>
 

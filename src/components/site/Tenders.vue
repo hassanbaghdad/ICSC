@@ -1,23 +1,23 @@
 <template>
 
-    <section class="featured-section testimonials-wrapper">
+    <section class=" testimonials-wrapper">
         <div class="container">
             <div class="sec-title text-center mt-10">
-                <h2 v-if="!$store.state.en" class="color-white cf f24b"> المناقصات التجارية</h2>
-                <h2 v-if="$store.state.en" class="color-white">Commercial Tenders</h2>
+                <h2 v-if="!$store.state.en" class="cf f24b" style="color: #dc1d24"> المناقصات التجارية</h2>
+                <h2 v-if="$store.state.en" style="color: #dc1d24">Commercial Tenders</h2>
 
                 <span class="decor"><span class="inner"></span></span>
             </div>
-            <div class="col col-12 col-md-6 col-lg-4 pa-6" v-for="ten in tenders" :key="'tttender_'+ten">
+            <div class="col col-12 col-md-6 col-lg-4 pa-6" v-for="(ten,i) in tenders" :key="'tttender___'+i">
                 <div class="item" >
                     <div class="single-testimonaials"  >
                         <router-link :to="'/tenders'">
-                            <div class="qoute-box pa-4" style="width: 100px;height: 100px;boder:3px solid black">
+                            <div class="qoute-box pa-4" style="width: 100px;height: 100px;boder:3px solid white">
                                 <v-img src="img/bid.png"/>
                             </div>
 
-                            <h3 v-if="!$store.state.en" class="cf f22b">{{ten.tender_title}}</h3>
-                            <h3 v-if="$store.state.en" class="cf f22b">{{ten.tender_title_en}}</h3>
+                            <div v-if="!$store.state.en" class="cf f22b white--text">{{ten.tender_title}}</div>
+                            <div v-if="$store.state.en" class="cf f22b white--text">{{ten.tender_title_en}}</div>
 
                         </router-link>
 

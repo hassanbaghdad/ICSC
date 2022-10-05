@@ -30,8 +30,13 @@ export default new Vuex.Store({
     })],
   state: {
     en:false,
+      render:false,
       loading:false,
   site:{
+        slide:{
+            show:true,
+            key:34
+        },
       posts:{
           search_post:'',
         posts:[]
@@ -80,7 +85,7 @@ export default new Vuex.Store({
       }
   },
       dash:{
-        drawer:true,
+        drawer:false,
           login:false,
         user:{
             name:'',
@@ -143,16 +148,19 @@ export default new Vuex.Store({
   },
   mutations: {
       RENDER(state){
-          axios.get('api-site/render').then(res=>{
-              state.site.info=res.data.info[0];
-              state.site.posts.posts=res.data.posts;
-              state.site.latest_news.latest_news=res.data.posts.reverse();
-              state.site.sections.sections=res.data.sections;
-              state.site.labs.labs=res.data.labs;
-              state.site.tenders.tenders=res.data.tenders;
-              state.site.gallery.gallery=res.data.gallery;
-              state.site.productions.productions=res.data.productions;
-          });
+
+              axios.get('api-site/render').then(res=>{
+                  state.site.info=res.data.info[0];
+                  state.site.posts.posts=res.data.posts;
+                  state.site.latest_news.latest_news=res.data.posts.reverse();
+                  state.site.sections.sections=res.data.sections;
+                  state.site.labs.labs=res.data.labs;
+                  state.site.tenders.tenders=res.data.tenders;
+                  state.site.gallery.gallery=res.data.gallery;
+                  state.site.productions.productions=res.data.productions;
+              });
+
+
       },
       DASH_GET_POSTS(state)
       {

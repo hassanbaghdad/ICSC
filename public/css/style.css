@@ -395,7 +395,7 @@ li {
 
 .social-icons ul li a:hover {
     color: #fff;
-    background: #fbca00;
+    background: #00518f;
 }
 
 
@@ -428,7 +428,7 @@ li {
 
 .single-header-info .icon-box .inner-box i:before {
     font-size: 30px;
-    color: #fbca00;
+    color: #007cba;
 }
 
 .single-header-info .content h3 {
@@ -546,7 +546,7 @@ li {
 }
 
 .navigation .nav-header > ul > li > ul > li:hover > a {
-    background: #fbca00;
+    background: #00518f;
     color: #fff;
     border-color: 0;
 }
@@ -714,7 +714,7 @@ li {
     bottom: 0;
     left: 0;
     content: '';
-    background: rgba(251, 202, 0, .92);
+    background: #005390e0;
 }
 
 .call-to-action-center {
@@ -1410,7 +1410,7 @@ li {
 }
 
 .services-content .service-box .content .title {
-    background-color: #fbca00;
+    background-color: #005390;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -1424,7 +1424,7 @@ li {
 }
 
 .services-content .service-box .content .title:before {
-    background-color: #fbca00;
+    background-color: #005390;
     bottom: 0;
     content: "";
     height: 101%;
@@ -1439,7 +1439,7 @@ li {
 }
 
 .services-content .service-box .content .title:after {
-    background-color: #fbca00;
+    background-color: #005390;
     bottom: 0;
     content: "";
     height: 101%;
@@ -1472,7 +1472,7 @@ li {
 }
 
 .services-content .service-box .overlay {
-    background-color: rgba(251, 202, 0, 0.90);
+    background-color: #005390;
     display: inline-block;
     left: 0;
     padding: 50px 30px 30px;
@@ -1492,7 +1492,7 @@ li {
 }
 
 .services-content .service-box .overlay::before {
-    background-color: rgba(251, 202, 0, 0.90);
+    background-color: #005390;
     bottom: -50px;
     content: "";
     height: 50px;
@@ -1504,7 +1504,7 @@ li {
 }
 
 .services-content .service-box .overlay::after {
-    background-color: rgba(251, 202, 0, 0.90);
+    background-color: #005390;
     bottom: -50px;
     content: "";
     height: 50px;
@@ -1516,7 +1516,7 @@ li {
 }
 
 .services-content .service-box .overlay p {
-    color: #1c1c1c;
+    color: white;
     font-family: 'Montserrat', sans-serif;
     line-height: 22px;
 }
@@ -1525,18 +1525,17 @@ li {
     color: #fff;
     display: inline-block;
     font-size: 18px;
-    font-style: italic;
     font-weight: 600;
     width: 100%;
 }
 
 .services-content .service-box .overlay .value .service-price {
-    color: #012f5d;
+    color: #fff;
     font-size: 22px;
 }
 
 .services-content .service-box .overlay .btn-link {
-    color: #053636;
+    color: #fff;
     display: inline-block;
     font-size: 13px;
     font-weight: 600;
@@ -1696,7 +1695,7 @@ li {
     right: 0;
     bottom: 0;
     content: '';
-    background: #fbca00;
+    background: #005390;
     opacity: .95;
 }
 
@@ -2178,7 +2177,7 @@ li {
 
 .single-testimonaials {
     text-align: center;
-    background: #fff;
+    background: #005794;
     padding: 0 50px;
     padding-bottom: 40px;
     margin-top: 30px;
@@ -2272,7 +2271,7 @@ li {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(251, 202, 0, .75);
+    background: #005390b0;
     transform: scale(0);
     -webkit-transform: scale(0);
     transition: all .5s ease;
@@ -2311,7 +2310,7 @@ li {
     height: 40px;
     margin-right: 8px;
     background: #fff;
-    color: #fbca00;
+    color: #005390;
     border: 1px solid #fff;
     line-height: 38px;
     font-size: 18px;
@@ -2320,7 +2319,7 @@ li {
 }
 
 .single-blog-post .img-box .overlay .box .content ul li a:hover {
-    background: #fbca00;
+    background: #005390;
     border-color: #fff;
     color: #fff;
 }
@@ -2341,7 +2340,7 @@ li {
 }
 
 .single-blog-post .content-box .date-box .inner .date {
-    background: #fbca00;
+    background: #005390;
     padding: 15px 0;
 }
 
@@ -2613,8 +2612,10 @@ li {
 
 .footer-widget .contact li i,
 .footer-widget .contact li span {
-    display: table-cell;
+
     vertical-align: middle;
+    padding: 5px;
+    margin: 5px;
 }
 
 .footer-widget .contact li i {
@@ -2659,8 +2660,8 @@ li {
 }
 
 .footer-widget .social li a:hover {
-    background: #fbca00;
-    border-color: #fbca00;
+    background: #007cba;
+    border-color: #fff;
 }
 
 .footer-widget h3.title {
@@ -2738,11 +2739,10 @@ li {
 .footer-widget.contact-widget textarea {
     width: 100%;
     height: 50px;
-    background: #2C353C;
     color: #C9C9C9;
     font-size: 13px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid grey;
     outline: none;
     padding: 0 20px;
 }
@@ -2756,7 +2756,7 @@ li {
 .footer-widget.contact-widget button {
     width: 100%;
     height: 50px;
-    background: #fbca00;
+    background: #007cba;
     color: #fff;
     text-transform: uppercase;
     font-size: 13px;
@@ -2901,7 +2901,7 @@ li {
 }
 
 .footer.bg-style .footer-widget.news-post ul li .content span {
-    color: #fbca00;
+    color: white;
     font-size: 12px;
     font-style: italic;
     font-weight: 500;

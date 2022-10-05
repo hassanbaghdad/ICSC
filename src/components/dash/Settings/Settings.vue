@@ -34,9 +34,7 @@
                               <div class="col col-12 col-lg-6">
                                   <v-text-field :rules="req" v-model="info.facebook" label="Facebook" outlined prepend-inner-icon="mdi-facebook"/>
                               </div>
-                              <div class="col col-12 col-lg-6">
-                                  <v-text-field :rules="req" v-model="info.twitter" label="Twitter" outlined prepend-inner-icon="mdi-twitter"/>
-                              </div>
+
                               <div class="col col-12 col-lg-6">
                                   <v-text-field :rules="req" v-model="info.youtube" label="YouTube" outlined prepend-inner-icon="mdi-youtube"/>
                               </div>

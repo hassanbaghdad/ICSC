@@ -1,15 +1,15 @@
 <template>
     <div class="container mt-16">
-        <div class="row">
+        <div class="row mb-16">
             <div class="col col-12 col-lg-8">
-                <v-card elevation="3"  :loading="loading">
+                <v-card elevation="3" class="mb-16"  :loading="loading">
                     <v-card-title>
                         <v-img :src="$axios.defaults.baseURL+'/images/'+lab.lab_image_cover"/>
                     </v-card-title>
                     <v-divider/>
                     <v-card-text>
 
-                      <v-img contain max-height="500" class="ma-6" :src="$axios.defaults.baseURL+'/images/'+lab.lab_image"/>
+                      <v-img contain max-height="300" class="ma-6" :src="$axios.defaults.baseURL+'/images/'+lab.lab_image"/>
 <v-divider/>
                          <v-simple-table v-slot:default class="rtl" v-if="!loading">
                                     <tbody>
@@ -119,7 +119,7 @@
                         <template v-for="(slide , i ) in labs" >
                             <v-list-item  @click="change_slug(slide.lab_slug)" :key="'lab_slide_item_'+i" dense>
                                 <v-list-item-avatar :key="'i_'+i">
-                                    <v-img :key="'i_i_i_i'+i" contain class="ma-4" :src="$axios.defaults.baseURL+'/images/'+slide.lab_image"/>
+                                    <v-img  :key="'i_i_i_i'+i" contain class="ma-4" :src="$axios.defaults.baseURL+'/images/'+slide.lab_image"/>
                                 </v-list-item-avatar>
                                 <v-list-item-title class="mr-2 ml-2 cf" :key="'i_i_'+i">
                                     <span v-if="!$store.state.en">{{slide.lab_name}}</span>
@@ -187,7 +187,9 @@
             this.get_lab();
             this.get_labs();
         },
-
+        mounted () {
+            window.scrollTo(0, 0)
+        }
 
     }
 </script>

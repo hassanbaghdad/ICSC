@@ -3,7 +3,7 @@
    <div>
        <div class="row">
            <div class="col col-12 col-md-4 col-lg-3 col-lg-offset-4">
-              <v-form lazy-validation v-model="valid" ref="form">
+              <v-form lazy-validation v-model="valid" ref="form" >
                   <v-card elevation="6" class="mt-10">
                       <v-card-title class="error">
                           <v-icon dark>mdi-lock</v-icon>
@@ -14,9 +14,9 @@
                           <div class="row">
                               <div class="col px-4">
 
-                                  <v-text-field :rules="req_email" v-model="user.email" prepend-inner-icon="mdi-email"  type="email" outlined label="E-mail"></v-text-field>
+                                  <v-text-field :rules="req_email" v-model="user.email" prepend-inner-icon="mdi-email"  type="email" outlined label="E-mail" v-on:keyup.enter="login"></v-text-field>
 
-                                  <v-text-field :rules="req" v-model="user.password" prepend-inner-icon="mdi-lock" type="password" outlined label="Password"></v-text-field>
+                                  <v-text-field :rules="req" v-model="user.password" prepend-inner-icon="mdi-lock" type="password" outlined label="Password" v-on:keyup.enter="login"></v-text-field>
                               </div>
 
                           </div>
@@ -27,6 +27,7 @@
                               <v-icon>mdi-key</v-icon>
                               <span class="mr-2 cf f20">دخول</span>
                           </v-btn>
+                          <input type="hidden" >
                       </v-card-actions>
                   </v-card>
               </v-form>
@@ -47,11 +48,7 @@
                     password:''
                 },
                 req:[v=>!!v || 'هذا الحقل مطلوب'],
-                req_email:[v=>!!v && String(v)
-                    .toLowerCase()
-                    .match(
-                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                    ) || 'يرجى كتابة البريد بشكل صحيح']
+                req_email:[v=>!!v || 'يرجى كتابة البريد بشكل صحيح']
             }
         },
         methods:{
@@ -67,9 +64,28 @@
                         this.$axios.defaults.headers.common['Authorization'] = "Bearer "+res.data.token;
                         this.$router.push('/dashboard/plants')
                     }).catch(err=>{
+
+                        var msg = "اسم المستخدم او كلمة المرور غير صحيحة";
+                        try{
+                            if(err.response.data.errors.email != undefined)
+                            {
+                                msg = err.response.data.errors.email;
+                            }
+                            if(err.response.data.errors.password != undefined)
+                            {
+                                msg = err.response.data.errors.password;
+                            }
+                        }catch (e) {
+                            console.log(e)
+                        }
+                        
+
+
+
+
                         this.$fire({
                             title: "فشل",
-                            text: err.response.data.msg,
+                            text: msg,
                             type: "error",
                             timer: 5000
                         });
@@ -81,7 +97,7 @@
 
         },
         created(){
-
+                this.$store.state.dash.login = false;
         }
     }
 </script>

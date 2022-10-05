@@ -4,6 +4,7 @@
             color="#363636"
             app right v-model="$store.state.dash.drawer"
             width="300"
+            v-if="$store.state.dash.login"
     >
         <v-card
 

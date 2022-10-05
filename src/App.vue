@@ -20,6 +20,7 @@
       }
     },
     created(){
+
       this.$store.commit("RENDER");
 
       if(localStorage.getItem('en') =="true")

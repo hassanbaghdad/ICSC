@@ -12,10 +12,10 @@
 
 
                         <div class="content-box" >
-                            <div  style="font-size: 22px !important;line-height: 30px" class="cf f24b text-justify mt-4 mr-4">
+                            <div  style="font-size: 22px !important;line-height: 30px" class="cf f24b  mt-4 mr-4">
 
-                                <p v-if="!$store.state.en">نوفر لكم اعلى معايير الجودة التي تلبي طموحاتكم</p>
-                                <p v-if="$store.state.en">
+                                <p v-if="!$store.state.en" style="font-size: 22px !important;text-align: right;line-height: 40px">نوفر لكم اعلى معايير الجودة التي تلبي طموحاتكم</p>
+                                <p v-if="$store.state.en" style="font-size: 22px !important;text-align: left;line-height:40px">
                                     We provide you with the highest quality standards that meet your aspirations
                                 </p>
                             </div>
@@ -32,8 +32,8 @@
                         </div>
                         <div class="content-box">
                             <div  style="font-size: 22px !important;line-height: 30px" class="cf f24b text-justify mt-4 mr-4">
-                                <p v-if="!$store.state.en">بكل فخر خبرة اكثر من 50 سنة في انتاج الاسمنت</p>
-                                <p v-if="$store.state.en">
+                                <p v-if="!$store.state.en" style="font-size: 22px !important;text-align: right;line-height:40px">بكل فخر خبرة اكثر من 50 سنة في انتاج الاسمنت</p>
+                                <p v-if="$store.state.en"  style="font-size: 22px !important;text-align: left;line-height:40px">
                                     Proudly more than 50 years experience in cement production
                                 </p>
                             </div>
@@ -52,8 +52,8 @@
                         <div class="content-box f22">
                             <div  style="font-size: 22px !important;line-height: 50px" class="cf f24b text-justify mt-4 mr-4">
 
-                                <p class="f20 cf" v-if="!$store.state.en">نحن دائما في طليعة السوق الصناعية</p>
-                                <p class="f20 cf" v-if="$store.state.en">We are always at the forefront of the industrial market</p>
+                                <p class="f20 cf" v-if="!$store.state.en" style="font-size: 22px !important;text-align: right;line-height:40px">نحن دائما في طليعة السوق الصناعية</p>
+                                <p class="f20 cf" v-if="$store.state.en"  style="font-size: 22px !important;text-align: left;line-height:40px">We are always at the forefront of the industrial market</p>
                             </div>
                         </div>
                     </div>
