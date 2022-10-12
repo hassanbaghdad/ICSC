@@ -1,17 +1,23 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col col-12">
-                <v-card :class="$store.state.en?'ma-6':'rtl ma-6' ">
+            <div class="col col-12 col-lg-8">
+                <v-card :class="$store.state.en?'mt-6 mb-6':'rtl mt-6 mb-6' ">
                     <v-card-title>
                         <v-icon>mdi-cube-outline</v-icon>
-                        <span v-if="!$store.state.en" class="cf f20 mr-2">المنتجات</span>
-                        <span v-if="$store.state.en" class="cf f20 mr-2 ml-2 float-left">Production</span>
+                        <span v-if="!$store.state.en" class="cf f20 mr-2 grey--text">المنتجات</span>
+                        <span v-if="$store.state.en" class="cf f20 mr-2 ml-2 float-left grey--text">Production</span>
                     </v-card-title>
                     <v-divider/>
-                    <v-divider/>
                     <v-card-text>
-                        <v-simple-table v-slot:default>
+                        <p v-if="!$store.state.en&&!table" class="text-justify cf f14" style="line-height: 30px">
+                            {{text}}
+                        </p>
+                        <p v-if="$store.state.en&&!table" class="text-justify cf f14" style="line-height: 30px" >
+                            {{text_en}}
+                        </p>
+
+                        <v-simple-table v-slot:default v-if="table">
                             <thead>
                             <tr>
                                 <th class="cf f20 text-center">
@@ -58,6 +64,71 @@
                     </v-card-text>
                 </v-card>
             </div>
+            <div class="col col-12 col-lg-4">
+                <v-card elevation="3" class="mt-6">
+
+                    <v-list :class="$store.state.en?'':'rtl'">
+
+                        <v-list-item  dense @click="table=true">
+                            <v-list-item-avatar>
+                                <v-icon>mdi-cube-outline</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-title class="mr-2 ml-2 cf">
+                                <span v-if="!$store.state.en">المنتجات</span>
+                                <span v-if="$store.state.en">Products</span>
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-divider class="pa-0 ma-0"/>
+                        <v-list-item  dense :href="$axios.defaults.baseURL+'/images/'+prices.prices_file">
+                            <v-list-item-avatar>
+                                <v-icon>mdi-cash</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-title class="mr-2 ml-2 cf">
+                                <span v-if="!$store.state.en">اسعار السمنت</span>
+                                <span v-if="$store.state.en">Cement Prices</span>
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-divider class="pa-0 ma-0"/>
+
+                        <v-list-item  dense @click="changeText(prices.marketing_mec,prices.marketing_mec_en)">
+                            <v-list-item-avatar>
+                                <v-icon>mdi-currency-usd</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-title class="mr-2 ml-2 cf">
+                                <span v-if="!$store.state.en">الية تسويق الاسعار</span>
+                                <span v-if="$store.state.en">Price Marketing Mechanism</span>
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-divider class="pa-0 ma-0"/>
+                        <v-list-item  dense @click="changeText(prices.production_process_price,prices.production_process_price_en)">
+                            <v-list-item-avatar>
+                                <v-icon>mdi-chart-bell-curve</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-title class="mr-2 ml-2 cf">
+                                <span v-if="!$store.state.en">سير العمليات الانتاجية</span>
+                                <span v-if="$store.state.en">Production Process Flow</span>
+                            </v-list-item-title>
+                        </v-list-item>
+                        <v-divider class="pa-0 ma-0"/>
+                         <v-list-item  dense @click="changeText(prices.cement_inspection_certificates,prices.cement_inspection_certificates_en)">
+                            <v-list-item-avatar>
+                                <v-icon>mdi-certificate</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-title class="mr-2 ml-2 cf">
+                                <span v-if="!$store.state.en">شهادة فحص السمنت</span>
+                                <span v-if="$store.state.en">Cement Inspection Certificate</span>
+                            </v-list-item-title>
+                        </v-list-item>
+
+
+
+
+
+                    </v-list>
+                    <div class="mt-6"></div>
+                </v-card>
+
+            </div>
         </div>
     </div>
 </template>
@@ -68,12 +139,23 @@
         data(){
             return{
 
-
+                table:true,
+                text:'',
+                text_en:'',
                 search:{
                     prod_title:'',
                     prod_title_en:'',
                 },
-                prods:this.$store.state.site.productions.productions
+                prods:this.$store.state.site.productions.productions,
+                prices:{
+                    prices_file:'',
+                    marketing_mec:'',
+                    marketing_mec_en:'',
+                    production_process_price:'',
+                    production_process_price_en:'',
+                    cement_inspection_certificates:'',
+                    cement_inspection_certificates_en:''
+                }
             }
         },
         methods:{
@@ -99,12 +181,37 @@
                 this.$axios.get('api-site/get-prods').then(res=>{
                     this.prods = res.data
                 })
+            },
+            changeText(col,col_en)
+            {
+                this.table = false;
+                if(this.$store.state.en)
+                {
+                    this.text_en = col_en;
+
+                }else{
+                    this.text = col;
+                }
             }
 
         },
         created(){
             this.get_prods()
+        },
+        computed:{
+            get_prices:function () {
+                return this.$store.state.site.prices.prices
+            }
+        },
+        watch:{
+            get_prices:function (new_prices) {
+                this.prices = new_prices[0]
+            }
+        },
+        mounted(){
+            this.prices = this.$store.state.site.prices.prices[0]
         }
+
     }
 </script>
 

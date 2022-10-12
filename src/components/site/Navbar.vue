@@ -17,7 +17,7 @@
                                                 v-slot="{ hover }"
                                                 open-delay="100"
                                         >
-                                            <router-link :to="sec.section_slug">
+                                            <router-link :to="'/sections/'+sec.section_slug">
 
                                                 <v-icon  :class="hover?'rotate90left':''" :dark="hover">mdi-cog</v-icon>
                                                 <span class="mr-2">{{sec.section_title}}</span>

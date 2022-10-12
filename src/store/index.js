@@ -43,8 +43,8 @@ export default new Vuex.Store({
       },
       productions:{
           productions:[
-              {prod_name:'اسعار اللسمنت',prod_slug:'pricing'},
-              {prod_name:'شهادة فحص اللسمنت',prod_slug:'certeifcate'},
+              {prod_name:'اسعار اللسمنت',prod_slug:'prices'},
+              {prod_name:'شهادة فحص اللسمنت',prod_slug:'certeifcates'},
           ]
       },
       sections:{
@@ -82,6 +82,12 @@ export default new Vuex.Store({
       },
       social:{
           social:[]
+      },
+      certificates:{
+            certificates:[]
+      },
+      prices:{
+            prices:[]
       }
   },
       dash:{
@@ -137,6 +143,15 @@ export default new Vuex.Store({
                   delete_lab:false,
               }
           },
+          certificates:{
+            certificates:[],
+            forms:{
+                add_certificate:false
+            }
+          },
+          prices:{
+            prices:[]
+          },
           messages:{
             target:[],
             forms:{
@@ -158,6 +173,8 @@ export default new Vuex.Store({
                   state.site.tenders.tenders=res.data.tenders;
                   state.site.gallery.gallery=res.data.gallery;
                   state.site.productions.productions=res.data.productions;
+                  state.site.certificates.certificates=res.data.certificates;
+                  state.site.prices.prices=res.data.prices;
               });
 
 

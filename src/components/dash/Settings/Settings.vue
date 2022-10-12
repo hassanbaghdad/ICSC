@@ -38,12 +38,7 @@
                               <div class="col col-12 col-lg-6">
                                   <v-text-field :rules="req" v-model="info.youtube" label="YouTube" outlined prepend-inner-icon="mdi-youtube"/>
                               </div>
-                              <div class="col col-12 col-lg-6">
-                                  <v-text-field :rules="req" v-model="info.note" label="نص اعلى الصفحة" outlined prepend-inner-icon="mdi-note"/>
-                              </div>
-                              <div class="col col-12 col-lg-6">
-                                  <v-text-field :rules="req" v-model="info.note_en" label=" نص اعلى الصفحة انجليزي" outlined prepend-inner-icon="mdi-note"/>
-                              </div>
+
                           </div>
                            <div class="row pa-6">
                                <div class="col col-12">
@@ -53,6 +48,14 @@
                                    <v-textarea :rules="req" v-model="info.about_us_en" label=" حولنا انجليزي" outlined prepend-inner-icon="mdi-information"/>
                                </div>
                            </div>
+<!--                           <div class="row pa-6">-->
+<!--                               <div class="col col-12">-->
+<!--                                   <v-textarea :rules="req" v-model="info.about_us_footer" label="حولنا اسفل الصفحة" outlined prepend-inner-icon="mdi-information"/>-->
+<!--                               </div>-->
+<!--                               <div class="col col-12">-->
+<!--                                   <v-textarea :rules="req" v-model="info.about_us_en_footer" label=" حولنا انجليزي اسفل الصفحة" outlined prepend-inner-icon="mdi-information"/>-->
+<!--                               </div>-->
+<!--                           </div>-->
 
 
 
@@ -87,6 +90,8 @@
                     certificate_count:10,
                     about_us:'الشركة العراقية للسمنت هي اول شركة رائدة في مجال انتاج وتصنيع مواد البناء السمنتية على مستوى عالمي انطلقت من العراق وباشرت بالانتاج منذ اكثر من عشرون سنة',
                     about_us_en:'Description of about us  English',
+                    about_us_footer:'الشركة العراقية للسمنت هي اول شركة رائدة في مجال انتاج وتصنيع مواد البناء السمنتية على مستوى عالمي انطلقت من العراق وباشرت بالانتاج منذ اكثر من عشرون سنة',
+                    about_us_en_footer:'Description of about us  English',
 
                     site_phone:'07712345678',
                     site_email:'info@icsc.gov.iq',

@@ -6,10 +6,7 @@
 
                     <div class="col-md-3 col-sm-6" v-if="$store.state.en">
                         <div class="footer-widget about-widget text-right pa-4">
-                            <v-img contain class="ma-auto" max-height="100" src="/img/md-logo.png"></v-img>
-                            <p class="text-justify cf">
-                                The Iraqi Cement State Co, is one of the major companies of the Ministry of Industry and Minerals. Our company, since its establishment in 1936, has put success, excellence and excellence as a slogan for it, and the productive numbers it has achieved and the good reputation for the quality of its products was evidence of that, and through the huge sales that covered the Iraqi market from north to His south is another witness to what he mentioned above
-                            </p>
+                            <v-img contain class="ma-auto"  src="/img/md-logo.png"></v-img>
                         </div>
                     </div>
                     <div class="col-md-3 latest-post col-sm-6" v-if="!$store.state.en">
@@ -36,7 +33,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6" v-if="!$store.state.en">
                         <div class="footer-widget about-widget text-right">
-                            <h3 v-if="!$store.state.en" :class="$vuetify.breakpoint.xs?'cf f20 text-center white--text ma-auto ma-4':'cf f20 text-right white--text ma-auto ma-4 mr-6'">الاتصال بنا</h3>
+                            <h3 v-if="!$store.state.en" :class="$vuetify.breakpoint.xs?'cf f20 text-center white--text ma-auto ma-4':'cf f20 text-right white--text ma-auto ma-4 mr-6'">اتصل بنا</h3>
                             <ul  :class="$vuetify.breakpoint.xs?'contact rtl text-center':'contact rtl'" >
                                 <li><i class="fa fa-map-marker rtl"></i>
                                     <span v-if="$store.state.en">Iraq - Baghdad</span>
@@ -55,27 +52,27 @@
                         <div class="footer-widget about-widget text-right">
                             <h3 v-if="$store.state.en" class="title text-left">Links</h3>
                             <ul class="contact" >
-                                <li class="cf text-left"><router-link to="/news" class="white--text">
+                                <li class="cf text-left"><a href="/news" class="white--text">
                                     <v-icon color="white">mdi-web</v-icon>
                                     <span v-if="!$store.state.en">الاخبار</span>
                                     <span v-if="$store.state.en">News</span>
-                                </router-link> </li>
+                                </a> </li>
 
                                 <li class="cf text-left"><a href="/sections" class="white--text">
                                     <v-icon color="white">mdi-cog</v-icon>
                                     <span v-if="!$store.state.en">الاقسام</span>
                                     <span v-if="$store.state.en">Sections</span>
                                 </a> </li>
-                                <li class="cf text-left"><router-link to="/productions" class="white--text">
+                                <li class="cf text-left"><a href="/productions" class="white--text">
                                     <v-icon color="white">mdi-cube-outline</v-icon>
                                     <span v-if="!$store.state.en">المنتجات</span>
                                     <span v-if="$store.state.en">Productions</span>
-                                </router-link> </li>
-                                <li class="cf text-left"><router-link to="/contact-us" class="white--text">
+                                </a> </li>
+                                <li class="cf text-left"><a href="/contact-us" class="white--text">
                                     <v-icon color="white">mdi-information</v-icon>
                                     <span v-if="!$store.state.en">اتصل بنا</span>
                                     <span v-if="$store.state.en">Productions</span>
-                                </router-link> </li>
+                                </a> </li>
 
                             </ul>
 
@@ -135,22 +132,22 @@
                                     <span v-if="!$store.state.en">الاقسام</span>
                                     <span v-if="$store.state.en">Sections</span>
                                 </a> </li>
-                                <li class="cf"><router-link to="/productions" class="white--text">
+                                <li class="cf"><a href="/productions" class="white--text">
                                     <v-icon color="white" style="right: 5px">mdi-cube-outline</v-icon>
                                     <span v-if="!$store.state.en">المنتجات</span>
                                     <span v-if="$store.state.en">Productions</span>
-                                </router-link> </li>
-                                <li class="cf"><router-link to="/tenders" class="white--text">
+                                </a> </li>
+                                <li class="cf"><a href="/tenders" class="white--text">
                                     <v-icon color="white" style="right: 5px">mdi-cube-outline</v-icon>
                                     <span v-if="!$store.state.en">مناقصات</span>
                                     <span v-if="$store.state.en">Productions</span>
-                                </router-link> </li>
+                                </a> </li>
 
-                                <li class="cf"><router-link to="/contact-us" class="white--text">
+                                <li class="cf"><a href="/contact-us" class="white--text">
                                     <v-icon color="white">mdi-information</v-icon>
                                     <span v-if="!$store.state.en">اتصل بنا</span>
                                     <span v-if="$store.state.en">Productions</span>
-                                </router-link> </li>
+                                </a> </li>
 
                             </ul>
 
@@ -161,10 +158,8 @@
 
                     <div class="col-md-3 col-sm-6" v-if="!$store.state.en">
                         <div class="footer-widget about-widget text-right pa-4">
-                          <v-img contain class="ma-auto" max-height="100" src="/img/md-logo.png"></v-img>
-                            <p class="text-justify cf rtl">
+                          <v-img contain class="ma-auto"  src="/img/md-logo.png"></v-img>
 
-                                العامة للسمنت العراقية،هي إحدى كبريات شركات وزارة الصناعة والمعادن ا إن شركتنا ومنذ تأسيسها في عام 1936 وضعت النجاح والتفوق والتميز شعاراً لها وان الأرقام الإنتاجية التي حققتها والسمعة الطيبة لنوعية منتجاتها كانت شاهداً على ذلك، ومن خلال المبيعات الضخمة التي غطت السوق العراقية من شماله الى جنوبه شاهداً اخراً على ما مر ذكره                            </p>
                         </div>
                     </div>
 

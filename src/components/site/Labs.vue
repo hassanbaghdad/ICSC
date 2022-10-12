@@ -2,8 +2,8 @@
     <div>
         <v-divider/>
         <div class="title-box text-center">
-            <h2 v-if="!$store.state.en" class="cf f24b">المعامل</h2>
-            <h2 v-if="$store.state.en">Plants</h2>
+            <h2 v-if="!$store.state.en" class="cf f24b"> منتجاتنا</h2>
+            <h2 v-if="$store.state.en">Our Products </h2>
 
             <span class="decor"><span class="inner"></span></span>
         </div>
@@ -63,7 +63,7 @@
                                                         </router-link></h4>
                                                     </div>
                                                     <div class="overlay">
-
+                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b" >
                                                         <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
                                                         <p v-if="$store.state.en" class="cf f20">Plant Location</p>
                                                         <p v-if="!$store.state.en" class="cf f22">{{item.lab_location}} </p>
@@ -73,7 +73,7 @@
                                                         <a v-if="!$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type}}</a>
                                                         <a v-if="$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type_en}}</a>
 
-                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b" href="#">
+
                                                             <span v-if="!$store.state.en" class="white--text">عرض المزيد</span>
                                                             <span v-if="$store.state.en"  class="white--text">Read More </span>
                                                             <i class="fa fa-arrow-circle-right"></i>
@@ -106,7 +106,7 @@
                                                             <span v-if="$store.state.en">{{white.lab_name_en}}</span>
                                                         </router-link></h4>                                                    </div>
                                                     <div class="overlay">
-
+                                                        <router-link :to="'/plants/'+white.lab_slug" class="btn-link white--text cf mt-10 f20b">
                                                         <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
                                                         <p v-if="$store.state.en" class="cf f20">Plant Location</p>
                                                         <p v-if="!$store.state.en" class="cf f22">{{white.lab_location}} </p>
@@ -116,7 +116,6 @@
                                                         <a v-if="!$store.state.en" class="value cf white--text" href="#">{{white.lab_prod_type}}</a>
                                                         <a v-if="$store.state.en" class="value cf white--text" href="#">{{white.lab_prod_type_en}}</a>
 
-                                                        <router-link :to="'/plants/'+white.lab_slug" class="btn-link white--text cf mt-10 f20b" href="#">
                                                             <span v-if="!$store.state.en" class="white--text">عرض المزيد</span>
                                                             <span v-if="$store.state.en"  class="white--text">Read More </span>
                                                             <i class="fa fa-arrow-circle-right"></i>
@@ -149,7 +148,7 @@
                                                             <span v-if="$store.state.en">{{item.lab_name_en}}</span>
                                                         </router-link></h4>                                                    </div>
                                                     <div class="overlay">
-
+                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b">
                                                         <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
                                                         <p v-if="$store.state.en" class="cf f20">Plant Location</p>
                                                         <p v-if="!$store.state.en" class="cf f22">{{item.lab_location}} </p>
@@ -159,7 +158,6 @@
                                                         <a v-if="!$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type}}</a>
                                                         <a v-if="$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type_en}}</a>
 
-                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b" href="#">
                                                             <span v-if="!$store.state.en" class="white--text">عرض المزيد</span>
                                                             <span v-if="$store.state.en"  class="white--text">Read More </span>
                                                             <i class="fa fa-arrow-circle-right"></i>
@@ -192,6 +190,7 @@
                                                             <span v-if="$store.state.en">{{item.lab_name_en}}</span>
                                                         </router-link></h4>                                                    </div>
                                                     <div class="overlay">
+                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b">
 
                                                         <p v-if="!$store.state.en" class="cf f20">عنوان المعمل </p>
                                                         <p v-if="$store.state.en" class="cf f20">Plant Location</p>
@@ -202,7 +201,6 @@
                                                         <a v-if="!$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type}}</a>
                                                         <a v-if="$store.state.en" class="value cf white--text" href="#">{{item.lab_prod_type_en}}</a>
 
-                                                        <router-link :to="'/plants/'+item.lab_slug" class="btn-link white--text cf mt-10 f20b" href="#">
                                                             <span v-if="!$store.state.en" class="white--text">عرض المزيد</span>
                                                             <span v-if="$store.state.en"  class="white--text">Read More </span>
                                                             <i class="fa fa-arrow-circle-right"></i>

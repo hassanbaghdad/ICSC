@@ -74,7 +74,7 @@
 
                 <v-list-item link dense to="tenders">
                     <v-list-item-icon>
-                        <v-icon size="30" color="pink" class="float-right text-right">mdi-gavel</v-icon>
+                        <v-icon size="30" color="pink" class="float-right text-right">mdi-finance</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
                         <v-list-item-title>
@@ -84,7 +84,7 @@
                 </v-list-item>
                 <v-list-item link dense to="messages">
                     <v-list-item-icon>
-                        <v-icon size="30" color="success"  class="float-right text-right">mdi-email-outline</v-icon>
+                        <v-icon size="30" color="yellow"  class="float-right text-right">mdi-email-outline</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
                         <v-list-item-title>
@@ -92,6 +92,28 @@
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item link dense to="prices">
+                    <v-list-item-icon>
+                        <v-icon size="30" color="success"  class="float-right text-right">mdi-currency-usd</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            <span class="cf f16 mr-2">الاسعار</span>
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item link dense to="certificates">
+                    <v-list-item-icon>
+                        <v-icon size="30" color="info"  class="float-right text-right">mdi-certificate</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title>
+                            <span class="cf f16 mr-2">الشهادات</span>
+                        </v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
                 <v-list-item link dense to="settings">
                     <v-list-item-icon>
                         <v-icon size="30" dark color="warning"  class="float-right text-right">mdi-cogs</v-icon>

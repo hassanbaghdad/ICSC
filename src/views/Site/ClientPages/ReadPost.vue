@@ -34,8 +34,8 @@
                             </v-card-text>
                             <v-divider/>
                             <v-card-actions class="rtl">
-                                <v-card-subtitle>{{post.post_date.substr(0,10)}}</v-card-subtitle>
-                                <v-icon>mdi-eye</v-icon><span class="ml-2 mr-2">{{post.post_views}}</span>
+                                <v-card-subtitle style="color: grey !important;">{{post.post_date.substr(0,10)}}</v-card-subtitle>
+                                <v-icon color="grey">mdi-eye</v-icon><span class="ml-2 mr-2" style="color: grey !important;">{{post.post_views}}</span>
 
                             </v-card-actions>
                         </v-card>
@@ -82,8 +82,8 @@
                     </v-card-text>
                        <v-divider/>
                        <v-card-actions>
-                           <v-card-subtitle>{{post.post_date.substr(0,10)}}</v-card-subtitle>
-                           <v-icon>mdi-eye</v-icon><span class="ml-2 mr-2">{{post.post_views}}</span>
+                           <v-card-subtitle style="color: grey !important;">{{post.post_date.substr(0,10)}}</v-card-subtitle>
+                           <v-icon>mdi-eye</v-icon><span class="ml-2 mr-2" style="color: grey !important;">{{post.post_views}}</span>
 
                        </v-card-actions>
                    </v-card>

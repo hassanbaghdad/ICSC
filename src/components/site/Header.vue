@@ -3,7 +3,7 @@
     <header class="header cf" v-if="!$store.state.en">
         <div class="container">
             <div v-if="$vuetify.breakpoint.xs" class="logo pull-right">
-                <a href="index.html">
+                <a href="/">
                     <img src="img/resources/logo-ar.png" alt="Awesome Image" />
                 </a>
             </div>
@@ -38,7 +38,7 @@
                 <!--                </div>-->
             </div>
             <div v-if="!$vuetify.breakpoint.xs" class="logo pull-right">
-                <a href="index.html">
+                <a href="/">
                     <img src="img/resources/logo-ar.png" alt="Awesome Image" />
                 </a>
             </div>
@@ -48,7 +48,7 @@
     <header class="header" v-if="$store.state.en">
             <div class="container">
                 <div class="logo pull-left">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="img/resources/logo.png" alt="Awesome Image" />
                     </a>
                 </div>

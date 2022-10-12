@@ -4,9 +4,9 @@
             <div class="col col-12">
                 <v-card :class="$store.state.en?'ma-6':'rtl ma-6' ">
                     <v-card-title>
-                        <v-icon>mdi-gavel</v-icon>
-                        <span v-if="!$store.state.en" class="cf f20 mr-2">المناقصات</span>
-                        <span v-if="$store.state.en" class="cf f20 mr-2 ml-2 float-left">Tenders</span>
+                        <v-icon>mdi-finance</v-icon>
+                        <span v-if="!$store.state.en" class="cf f20 mr-2 grey--text">المناقصات</span>
+                        <span v-if="$store.state.en" class="cf f20 mr-2 ml-2 float-left grey--text">Tenders</span>
                     </v-card-title>
                     <v-divider/>
                     <v-card-title>

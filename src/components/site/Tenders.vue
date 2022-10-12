@@ -12,8 +12,8 @@
                 <div class="item" >
                     <div class="single-testimonaials"  >
                         <router-link :to="'/tenders'">
-                            <div class="qoute-box pa-4" style="width: 100px;height: 100px;boder:3px solid white">
-                                <v-img src="img/bid.png"/>
+                            <div class="qoute-box" style="width: 100px;height: 100px;broder:3px solid white">
+                                <v-icon size="80" color="#005794" class="ma-2">mdi-finance</v-icon>
                             </div>
 
                             <div v-if="!$store.state.en" class="cf f22b white--text">{{ten.tender_title}}</div>

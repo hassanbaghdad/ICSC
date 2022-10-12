@@ -22,6 +22,8 @@ import AllTenders from "@/views/Site/AllTenders";
 import ContactUs from "@/views/Site/ClientPages/ContactUs";
 import AllProduction from "@/views/Site/ClientPages/AllProduction";
 import Search from "@/views/Site/ClientPages/Search";
+import Certificates from "@/components/dash/Certificates/Certificates";
+import Prices from "@/components/dash/Prices/Prices";
 
 Vue.use(VueRouter)
 
@@ -36,6 +38,7 @@ const routes = [
       {path:'/sections/*',name:'ViewSection',component:ViewSection},
       {path:'/sections',name:'Sections',component:Sections2},
       {path:'/plants/*',name:'ViewPlant',component:ViewPlant},
+      {path:'/plants',name:'ViewPlant',component:ViewPlant},
       {path:'/tenders',name:'AllTenders',component:AllTenders},
       {path:'/contact-us',name:'ContactUs',component:ContactUs},
       {path:'/productions',name:'AllProduction',component:AllProduction},
@@ -57,6 +60,8 @@ const routes = [
       {path:'tenders',name:'Tenders',component:Tenders},
       {path:'messages',name:'Messages',component:Messages},
       {path:'settings',name:'Settings',component:Settings},
+      {path:'certificates',name:'Certificates',component:Certificates},
+      {path:'prices',name:'Prices',component:Prices},
 
     ]
   },

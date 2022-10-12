@@ -2,8 +2,8 @@
     <section class="blog-home sec-padding">
         <div class="container">
             <div class="sec-title text-center">
-                <h2 v-if="!$store.state.en" class="f24b cf">اخر الاخبار</h2>
-                <h2 v-if="$store.state.en">Latest News</h2>
+                <h2 v-if="!$store.state.en" class="f24b cf">النتائج</h2>
+                <h2 v-if="$store.state.en">Results</h2>
                 <span class="decor">
 					<span class="inner"></span>
                 </span>

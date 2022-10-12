@@ -1,13 +1,16 @@
 <template>
     <section class="sponsors-section mt-10" data-bg-color="white">
         <div class="container" v-if="success" >
-            <carousel :items="length">
+            <carousel :items="$vuetify.breakpoint.xs?1:4" :autoplay="true" :nav="false">
                 <router-link v-for="(lab,i) in length" :key="'slide_lab_i_'+i" :to="'/plants/'+labs[i].lab_slug" :class="$store.state.en?'':'rtl'">
-                    <v-icon v-if="$store.state.en&&success" size="40" class="ml-2 mr-2">mdi-factory</v-icon>
-                    <span v-if="!$store.state.en&&success" style="color: #525151" class="cf f16">{{labs[i].lab_name}}</span>
-                    <span v-if="$store.state.en&&success" style="color: #525151" class="cf f16">{{labs[i].lab_name_en}}</span>
-                    <v-icon v-if="!$store.state.en&&success" size="40" class="ml-2 mr-2">mdi-factory</v-icon>
+                   <div class="ma-2 pa-2">
+                       <v-icon v-if="!$store.state.en&&success" size="40" class="ml-2 mr-2">mdi-factory</v-icon>
+                       <v-icon v-if="$store.state.en&&success" size="40" class="ml-2 mr-2">mdi-factory</v-icon>
+                       <span v-if="!$store.state.en&&success" style="color: #525151" class="cf f16">{{labs[i].lab_name}}</span>
+                       <span v-if="$store.state.en&&success" style="color: #525151" class="cf f16">{{labs[i].lab_name_en}}</span>
 
+
+                   </div>
                 </router-link>
             </carousel>
 <!--            <ul v-if="success"  class="slider">-->

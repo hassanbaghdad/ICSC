@@ -5,9 +5,9 @@ import axios from "axios";
 import router from "@/router";
 
 // Full config:  https://github.com/axios/axios#request-config
-  //axios.defaults.baseURL = 'http://127.0.0.1:8000';
-  axios.defaults.baseURL = 'https://test.icsc.gov.iq/backend/public';
-  //axios.defaults.baseURL = '/backend/public';
+ //axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+ //axios.defaults.baseURL = 'https://test.icsc.gov.iq/backend/public';
+  axios.defaults.baseURL = '/backend/public';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Authorization'] = "Bearer "+localStorage.getItem("token");
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
